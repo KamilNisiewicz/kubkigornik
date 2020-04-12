@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+
+:root {
+    --main-white: #ffffff;
+    --main-blue: #324ff0;
+    --main-red: #ff0025;
+    --gradient-blue: #233391;
+
+    --font-russo: 'Russo One', sans-serif;
+    --font-kalam: 'Kalam', cursive;
+}
+
+body{
+    font-family: var(--font-kalam);
+    margin: 0;
+    padding: 0;
+}
+
+/* header */
+header{
+    margin: 20px 0;
+}
+
+header h1{
+    color: var(--main-red);
+    font-family: var(--font-russo);
+    font-size: 60px;
+    letter-spacing: 2px;
+    line-height: 70px;
+    margin: 0;
+    text-align: center;
+    text-shadow: 2px 2px 2px var(--main-blue);
+    text-transform: uppercase;
+}
+
+header .cups_counter{
+    color: var(--main-blue);
+    font-family: var(--font-russo);
+    font-size: 30px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+header .cups_counter .count{
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: -1px -1px 0 var(--main-red),
+     1px -1px 0 var(--main-red),
+    -1px 1px 0 var(--main-red),
+    1px 1px 0 var(--main-red);
+}
+
+/* NAVIGATION */
+nav {
+    border-bottom: 2px solid var(--main-red);
+    border-top: 2px solid var(--main-red);
+}
+
+nav .nav_container{
+    display: flex;
+    margin: 0px auto;
+    width: 800px;
+}
+
+.nav_container a{
+    background-size: 200% 200%;
+    color: var(--main-blue);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: calc(100% / 4);
+
+    -webkit-transition: background-position 300ms, color 300ms ease;
+    -moz-transition: background-position 300ms, color 300ms ease;
+    -ms-transition: background-position 300ms, color 300ms ease;
+    -o-transition: background-position 300ms, color 300ms ease;
+    transition: background-position 300ms, color 300ms ease;
+}
+
+.nav_container a.active{
+    background: var(--main-blue);
+    color: var(--main-white)
+}
+
+.nav_container a:hover{
+    background-image: linear-gradient(to top, var(--main-blue) 51%, transparent 50%);
+    background-position: 0 100%;
+    color: var(--main-white);
+
+    -webkit-transition: background-position 300ms, color 300ms ease;
+    -moz-transition: background-position 300ms, color 300ms ease;
+    -ms-transition: background-position 300ms, color 300ms ease;
+    -o-transition: background-position 300ms, color 300ms ease;
+    transition: background-position 300ms, color 300ms ease;
+}
+
+/* main */
+main{
+    background: linear-gradient(180deg, var(--main-blue) 10%, var(--gradient-blue) 95%);
+    color: var(--main-white);
+    min-height: 50vh;
+}
+
+main .container{
+    margin: 0px auto;
+    width: 800px;
+}
+
+/* footer */
+footer{
+    background: var(--main-red);
+    color: var(--main-white);
+    font-family: var(--font-russo);
+    font-size: 20px;
+    line-height: 75px;
+    text-align: center;
+}

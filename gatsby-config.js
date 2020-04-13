@@ -35,7 +35,9 @@ module.exports = {
         hostingWPCOM: false,
         useACF: true,
         includedRoutes: [
-          "**/kategorie",
+          "**/kubki",
+          "**/kategorie_kubki",
+          "**/kategorie_szklo",
         ],
       }
     },

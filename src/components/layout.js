@@ -7,20 +7,18 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Navigation from "./navigation"
 import Footer from "./footer"
 
-const Layout = ({ children, current_site }) => {
-
+const Layout = ({ children, total_count }) => {
   return (
     <>
-      <Header />
-      <Navigation current_site={current_site} />
+      <Header total_count={ total_count } />
+      <Navigation />
       <main>
-        <div class="container">
+        <div className="container">
           {children}
         </div>
       </main>

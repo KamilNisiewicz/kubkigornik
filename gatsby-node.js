@@ -28,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
 
     // cups link
-    const cups_links = await graphql(`
+    const cups_category_links = await graphql(`
       query MyQuery {
         allWordpressWpKategorieKubki {
           edges {
@@ -42,7 +42,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    cups_links.data.allWordpressWpKategorieKubki.edges.forEach(({ node }) => {
+    cups_category_links.data.allWordpressWpKategorieKubki.edges.forEach(({ node }) => {
       createPage({
         path: '/kubki/' + node.slug,
         component: require.resolve(`./src/pages/cups_list.js`),
@@ -52,6 +52,31 @@ exports.createPages = async ({ graphql, actions }) => {
           cat_slug: node.slug
         },
       })
+
+      const cup_links = graphql(`
+        query CupsLinks {
+          cups: allWordpressWpKubki(filter: {acf: {kategoria: {wordpress_id: {eq: ${node.wordpress_id}}}}}) {
+            edges {
+              node {
+                wordpress_id
+                slug
+              }
+            }
+          }
+        }
+      `).then(result => {
+        const cat_slug = node.slug
+        
+        result.data.cups.edges.forEach(({ node }) => {
+          createPage({
+            path: '/kubki/' + cat_slug + "/" + node.slug,
+            component: require.resolve(`./src/pages/cup_elem.js`),
+            context: {
+              cup_id: node.wordpress_id,
+            },
+          })
+        })
+      });
     })
 
     // glass link

@@ -6,18 +6,25 @@ import SEO from "../components/seo"
 import Breadcrumbs from "../components/breadcrumbs"
 
 const GlassPage = ({ data }) => (
-  <Layout current_site="index">
+  <Layout total_count={ data.totalCount.totalCount }>
     <SEO title="Szkło" />
     <Breadcrumbs name="Szkło" parent="" parent_name="" />
-    <h2 class="site_title">Szkło</h2>
-    <div class="glass_container tiles_container">
+    <h2 className="site_title">Szkło</h2>
+    <div className="section_description">
+      Wyroby ze szkłą zostały podzielone na następujące podkategorie:<br/>
+      <em>Kieliszki,</em>
+      <em>&nbsp;Kufle,</em>
+      <em>&nbsp;Szklanki</em>&nbsp;oraz
+      <em>&nbsp;Szklanki do whisky</em>
+    </div>
+    <div className="glass_container tiles_container">
     { 
-      data.allWordpressWpKategorieSzklo.nodes.map(function(elem) {
+      data.categories.nodes.map(function(elem) {
          return (
-            <div class="item">
+            <div className="item" key={ elem.wordpress_id }>
               <Link to={ "/szklo/" + elem.slug }>
                 <img src={ elem.acf.logo_szklo } alt={ "Zobacz kategorię " + elem.title } />
-                <h3 class="title">{ elem.title }</h3>
+                <h3 className="title">{ elem.title }</h3>
               </Link>
             </div>
          )
@@ -31,7 +38,7 @@ export default GlassPage;
 
 export const Query = graphql`
   query KategorieSzklo {
-    allWordpressWpKategorieSzklo(sort: {fields: title}) {
+    categories: allWordpressWpKategorieSzklo(sort: {fields: title}) {
       nodes {
         acf {
           logo_szklo
@@ -40,6 +47,9 @@ export const Query = graphql`
         title
         slug
       }
+    }
+    totalCount: allWordpressWpKubki {
+      totalCount
     }
   }
 `

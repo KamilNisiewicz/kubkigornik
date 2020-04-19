@@ -123,18 +123,6 @@ nav .nav_container{
     transition: background-position 300ms, color 300ms ease;
 }
 
-/* main */
-main{
-    background: linear-gradient(180deg, var(--main-blue) 10%, var(--gradient-blue) 95%);
-    color: var(--main-white);
-    min-height: 50vh;
-}
-
-main .container{
-    margin: 0px auto;
-    width: 800px;
-}
-
 /* footer */
 footer{
     background: var(--main-red);
@@ -146,6 +134,17 @@ footer{
 }
 
 /* MAIN */
+main{
+    background: linear-gradient(180deg, var(--main-blue) 10%, var(--gradient-blue) 95%);
+    color: var(--main-white);
+    min-height: 50vh;
+}
+
+main .container{
+    margin: 0px auto;
+    width: 800px;
+}
+
 .site_title{
     border-bottom: 2px solid var(--main-white);
     color: var(--main-white);
@@ -153,6 +152,36 @@ footer{
     line-height: 30px;
     margin: 0 0 20px;
     padding: 0 0 10px;
+}
+
+.section_description{
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.main_page_content{
+    font-size: 20px;
+    line-height: 30px;
+    padding: 30px 20px;
+}
+
+.main_page_content p, .section_description p{
+    margin:10px 0;
+}
+
+.main_page_content .mail_to, .section_description .mail_to{
+    color: var(--main-white);
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.main_page_content .mail_to:hover, .section_description .mail_to:hover{
+    color: var(--main-red);
 }
 
 .tiles_container{
@@ -199,4 +228,42 @@ footer{
 
 .tiles_container .item img{
     border-radius: 15px;
+}
+
+.looking_container{
+    display: grid;
+    grid-gap: 40px 0;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    padding: 30px 0 50px;
+}
+
+.looking_container .item{
+    min-height: 150px;
+    overflow: hidden;
+    width: 200px;
+}
+
+.looking_container .item img{
+    border-radius: 5px;
+    transition: all .5s;
+    width: 100%;
+}
+
+.looking_container .item:hover img{
+    cursor: pointer;
+    transform: scaleX(1.1);
+}
+
+.looking_container .item .title{
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    transition: all .5s;
+}
+
+.looking_container .item:hover .title{
+    color: var(--main-red);
+    cursor: pointer;
+    text-shadow: 1px 1px 1px #000000;
 }

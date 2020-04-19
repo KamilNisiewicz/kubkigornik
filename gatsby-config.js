@@ -24,6 +24,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
+        icon: `src/icons/apple-icon.png`
       },
     },
     {
@@ -38,6 +39,7 @@ module.exports = {
           "**/kubki",
           "**/kategorie_kubki",
           "**/kategorie_szklo",
+          "**/szukam",
         ],
       }
     },

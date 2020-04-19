@@ -1,13 +1,13 @@
 import React from "react"
 
-const Header = ({ }) => (
+const Header = ({ total_count }) => (
   <header>
       <h1>
         Kubki Górnik Zabrze
       </h1>
-      <div class="cups_counter">
-        Stan kolekcji: <span class="count">172</span>
+      <div className="cups_counter">
+        Stan kolekcji: <span className="count">{ total_count }</span>
       </div>
   </header>
 )
-export default Header
+export default Header;

@@ -6,18 +6,26 @@ import SEO from "../components/seo"
 import Breadcrumbs from "../components/breadcrumbs"
 
 const CupsPage = ({ data }) => (
-  <Layout current_site="index">
+  <Layout total_count={ data.totalCount.totalCount }>
     <SEO title="Kubki" />
     <Breadcrumbs name="Kubki" parent="" parent_name="" />
-    <h2 class="site_title">Kubki</h2>
-    <div class="cups_container tiles_container">
+    <h2 className="site_title">Kubki</h2>
+    <div className="section_description">
+      Kubeczki zostały podzielone na następujące podkategorie:<br/>
+      <em>Fan Cluby</em>,
+      <em>&nbsp;Górnik Zabrze</em>,
+      <em>&nbsp;Okazjonalne</em>,
+      <em>&nbsp;Torcida Górnik</em>&nbsp;oraz
+      <em>&nbsp;Zgody</em>
+    </div>
+    <div className="cups_container tiles_container">
     { 
-      data.allWordpressWpKategorieKubki.nodes.map(function(elem) {
+      data.categories.nodes.map(function(elem) {
          return (
-           <div class="item">
+           <div className="item" key={ elem.wordpress_id }>
             <Link to={ "/kubki/" + elem.slug }>
               <img src={ elem.acf.logo_kategoria } alt={ "Zobacz kategorię " + elem.title } />
-              <h3 class="title">{ elem.title }</h3>
+              <h3 className="title">{ elem.title }</h3>
             </Link>
            </div>
          )
@@ -31,7 +39,7 @@ export default CupsPage;
 
 export const Query = graphql`
   query KategorieKubki {
-    allWordpressWpKategorieKubki(sort: {fields: title}) {
+    categories: allWordpressWpKategorieKubki(sort: {fields: title}) {
       nodes {
         acf {
           logo_kategoria
@@ -40,6 +48,9 @@ export const Query = graphql`
         title
         slug
       }
+    }    
+    totalCount: allWordpressWpKubki {
+      totalCount
     }
   }
 `

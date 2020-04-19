@@ -6,12 +6,15 @@ import SEO from "../components/seo"
 import Breadcrumbs from "../components/breadcrumbs"
 
 const GlassListPage = ({ data }) => (
-  <Layout current_site="index">
+  <Layout total_count={ data.totalCount.totalCount }>
     <SEO title="Szkło lista" />
-    <Breadcrumbs name={ data.allWordpressWpKategorieSzklo.nodes[0].title } parent="/szklo" parent_name="Szkło" />
-    <h2 class="site_title">
-    { data.allWordpressWpKategorieSzklo.nodes[0].title }
+    <Breadcrumbs name={ data.categories.nodes[0].title } parent="/szklo" parent_name="Szkło" />
+    <h2 className="site_title">
+      { data.categories.nodes[0].title }
     </h2>
+    <div className="section_description" 
+    dangerouslySetInnerHTML={{__html: data.categories.nodes[0].content }}>
+    </div>
   </Layout>
 )
 
@@ -19,10 +22,14 @@ export default GlassListPage;
 
 export const Query = graphql`
   query Glass($cat_id: Int) {
-    allWordpressWpKategorieSzklo(filter: {wordpress_id: {eq: $cat_id}}) {
+    categories: allWordpressWpKategorieSzklo(filter: {wordpress_id: {eq: $cat_id}}) {
       nodes {
         title
+        content
       }
-   }
+    }
+    totalCount: allWordpressWpKubki {
+      totalCount
+    }
   }
 `

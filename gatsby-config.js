@@ -37,12 +37,24 @@ module.exports = {
         useACF: true,
         includedRoutes: [
           "**/kubki",
+          "**/szklo",
           "**/kategorie_kubki",
           "**/kategorie_szklo",
           "**/szukam",
         ],
       }
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+          },
+          `gatsby-remark-lazy-load`,
+        ]
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

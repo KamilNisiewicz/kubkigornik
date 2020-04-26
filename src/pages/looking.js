@@ -1,9 +1,10 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Breadcrumbs from "../components/breadcrumbs"
+import Modal from "../components/modal"
 
 const LookingPage = ({ data }) => (
   <Layout total_count={ data.totalCount.totalCount }>
@@ -24,14 +25,15 @@ const LookingPage = ({ data }) => (
     { 
       data.looking.nodes.map(function(elem) {
          return (
-            <div className="item" key={ elem.wordpress_id }>
-              <img src={ elem.acf.zdjecie_szukam } alt={ "Kubek " + elem.title + " - zdjęcie" } className="img" />
+            <div className="item" key={ elem.wordpress_id } onClick={ openModal } onKeyDown={ openModal } role="presentation">
+              <img data-src={ elem.acf.zdjecie_szukam } alt={ "Kubek " + elem.title + " - zdjęcie" } className="img lazyload" />
               <div dangerouslySetInnerHTML={{__html: elem.title }} className="title"></div>
             </div>
          )
       })
     }
     </div>
+    <Modal />
   </Layout>
 )
 
@@ -55,3 +57,10 @@ export const Query = graphql`
     }
   }
 `
+
+export const openModal = () => {
+  document.querySelector('.modal .modal_layer').style.opacity = 0.6;
+  document.querySelector('.modal .modal_layer').style.visibility = 'visible';
+  document.querySelector('.modal .modal_container').style.opacity = 1;
+  document.querySelector('.modal .modal_container').style.visibility = 'visible';
+}

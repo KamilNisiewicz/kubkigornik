@@ -230,6 +230,92 @@ main .container{
     border-radius: 15px;
 }
 
+.item_list{
+    display: grid;
+    grid-gap: 30px 0;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    padding: 30px 0 50px;
+}
+
+.item_list{
+    text-decoration: none;
+}
+
+.item_list .item a{
+    text-decoration: none;
+}
+
+.item_list .item:hover .img{
+    border: 3px solid var(--main-red);
+}
+
+.item_list .item:hover .title{
+    color: var(--main-red);
+    text-shadow: 1px 1px 1px #000000;
+}
+
+.item_list .item .img{
+    border: 3px solid var(--main-white);
+    display: block;
+    max-width: 225px;
+    transition: all .5s;
+}
+
+.item_list .item .title{
+    color: var(--main-white);
+    font-size: 20px;
+    line-height: 25px;
+    margin: 10px 0 0;
+    max-width: 225px;
+    text-align: center;
+    transition: all .5s;
+}
+
+.cup_info, .glass_info{
+    font-size:20px;
+    font-weight: 300;
+    line-height: 30px;
+    margin: 0;
+}
+
+.cup_info span, .glass_info span{
+    font-weight: 700;
+}
+
+.cup_images{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    padding: 30px 0 50px;
+}
+
+.cup_images .img{
+    border: 3px solid var(--main-white);
+    display:block;
+    transition: all .5s;
+    width: 244px;
+}
+
+.cup_images .img:hover, .glass_images .img:hover{
+    border: 5px solid var(--main-red);
+    cursor: pointer;
+}
+
+.glass_images{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    padding: 30px 0 50px;
+}
+
+.glass_images .img{
+    border: 3px solid var(--main-white);
+    display:block;
+    transition: all .5s;
+    width: 294px;
+}
+
 .looking_container{
     display: grid;
     grid-gap: 40px 0;
@@ -241,11 +327,10 @@ main .container{
 .looking_container .item{
     min-height: 150px;
     overflow: hidden;
-    width: 200px;
+    width: 225px;
 }
 
 .looking_container .item img{
-    border-radius: 5px;
     transition: all .5s;
     width: 100%;
 }
@@ -265,5 +350,86 @@ main .container{
 .looking_container .item:hover .title{
     color: var(--main-red);
     cursor: pointer;
+    text-shadow: 1px 1px 1px #000000;
+}
+
+.modal .modal_layer{
+    background: #000000;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+    visibility: hidden;
+    width: 100%;
+}
+
+.modal .modal_container{
+    background: var(--main-white);
+    height: 530px;
+    left: 50%;
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: visibility 0s, opacity 0.3s linear;
+    visibility: hidden;
+    width: 700px;
+}
+
+.modal .modal_content{
+    position: relative;
+}
+
+.modal .modal_content .modal_close{
+    background: #000000 url('/images/close.png') no-repeat 5px 5px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: -40px;
+    width: 40px;
+}
+
+.modal .modal_content .modal_close:hover{
+    cursor: pointer;
+}
+
+.modal .modal_prev, .modal .modal_next{
+    height: 38px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+}
+
+.modal .modal_prev{
+    background: transparent url('/images/prev.png') no-repeat;
+    left: 10px;
+}
+
+.modal .modal_next{
+    background: transparent url('/images/next.png') no-repeat;
+    right: 10px;
+}
+
+.modal .modal_info{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0 0;
+}
+
+.modal .modal_info img{
+    display: block;
+    max-width: 600px;
+}
+
+.modal .modal_info h5{
+    color: var(--main-red);
+    font-size: 24px;
+    line-height: 50px;
+    margin: 0;
+    text-align: center;
     text-shadow: 1px 1px 1px #000000;
 }

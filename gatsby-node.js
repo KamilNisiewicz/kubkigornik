@@ -104,5 +104,30 @@ exports.createPages = async ({ graphql, actions }) => {
           cat_slug: node.slug
         },
       })
+
+      const glasses_links = graphql(`
+        query GlassesLinks {
+          glasses: allWordpressWpSzklo(filter: {acf: {kategoria_szklo: {wordpress_id: {eq: ${node.wordpress_id}}}}}, sort: {fields: title, order: ASC}) {
+            edges {
+              node {
+                wordpress_id
+                slug
+              }
+            }
+          }
+        }
+      `).then(result => {
+        const cat_slug = node.slug
+
+        result.data.glasses.edges.forEach(({ node }) => {
+          createPage({
+            path: '/szklo/' + cat_slug + "/" + node.slug,
+            component: require.resolve(`./src/pages/glass_elem.js`),
+            context: {
+              glass_id: node.wordpress_id,
+            },
+          })
+        })
+      });
     })
 }

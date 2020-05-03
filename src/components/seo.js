@@ -8,12 +8,13 @@
 import React from "react"
 import Helmet from "react-helmet"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, title }) {
 
   return (
-    <Helmet
-      title={title}
-    />
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+    </Helmet>
   )
 }
 

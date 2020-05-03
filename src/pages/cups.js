@@ -7,7 +7,10 @@ import Breadcrumbs from "../components/breadcrumbs"
 
 const CupsPage = ({ data }) => (
   <Layout total_count={ data.totalCount.totalCount }>
-    <SEO title="Kubki" />
+    <SEO 
+      title="Kubeczki, garnuszki - kubki Górnik Zabrze"
+      description="Kubeczki wydane przez Górnik, grupę kibicowską Torcida
+      oraz zaprzyjaźniony z klubem zespoły. Zobacz!" />
     <Breadcrumbs name="Kubki" parent="" parent_name="" />
     <h2 className="site_title">Kubki</h2>
     <div className="section_description">

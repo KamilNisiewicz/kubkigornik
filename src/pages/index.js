@@ -6,7 +6,10 @@ import SEO from "../components/seo"
 
 const IndexPage = ({ data }) => (
   <Layout total_count={ data.totalCount.totalCount }>
-    <SEO title="Kubki Górnik" />
+    <SEO 
+      title="Strona kolekcjonerska - kubki Górnik Zabrze"
+      description="Kubki, kieliszki, kufle oraz inne szkło wydane przez klub
+      i kibiców Górnika Zabrze. Zobacz kolekcję!" />
     <div className="main_page_content">
       Cześć!
       <p>Zapraszam do oglądania mojej kolekcji kubków oraz szkła związanych

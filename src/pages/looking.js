@@ -8,7 +8,10 @@ import Modal from "../components/modal"
 
 const LookingPage = ({ data }) => (
   <Layout total_count={ data.totalCount.totalCount }>
-    <SEO title="Szukam" />
+    <SEO 
+      title="Poszukuję - kubki Górnik Zabrze"
+      description="Poniższa lista zawiera listę kubków i kieliszków, których
+      brakuje w kolekcji. Zapraszam do kontaktu!" />
     <Breadcrumbs name="Szukam" parent="" parent_name="" />
     <h2 className="site_title">Szukam ({ data.looking.totalCount })</h2>
     <div className="section_description">
@@ -23,9 +26,9 @@ const LookingPage = ({ data }) => (
     </div>
     <div className="looking_container">
     { 
-      data.looking.nodes.map(function(elem) {
+      data.looking.nodes.map(function(elem, index) {
          return (
-            <div className="item" key={ elem.wordpress_id } onClick={ openModal } onKeyDown={ openModal } role="presentation">
+            <div className={ "item item"+index } key={ elem.wordpress_id } onClick={ ()=>{ openModal(index)} } onKeyDown={ ()=>{ openModal(index)} } role="presentation">
               <img data-src={ elem.acf.zdjecie_szukam } alt={ "Kubek " + elem.title + " - zdjęcie" } className="img lazyload" />
               <div dangerouslySetInnerHTML={{__html: elem.title }} className="title"></div>
             </div>
@@ -58,7 +61,20 @@ export const Query = graphql`
   }
 `
 
-export const openModal = () => {
+export const openModal = ( item_id ) => {
+  const item = document.querySelector('.item'+item_id);
+  const modal = document.querySelector('.modal_info');
+  const modal_prev = document.querySelector('.modal_prev');
+  const modal_next = document.querySelector('.modal_next');
+
+  let img_src = item.children[0].src;
+  let header_text = item.children[1].textContent;
+
+  modal.children[0].src = img_src;
+  modal.children[1].textContent = header_text;
+  modal_prev.setAttribute("index", parseInt(item_id-1));
+  modal_next.setAttribute("index", parseInt(item_id+1));
+
   document.querySelector('.modal .modal_layer').style.opacity = 0.6;
   document.querySelector('.modal .modal_layer').style.visibility = 'visible';
   document.querySelector('.modal .modal_container').style.opacity = 1;

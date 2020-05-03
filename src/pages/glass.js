@@ -7,7 +7,10 @@ import Breadcrumbs from "../components/breadcrumbs"
 
 const GlassPage = ({ data }) => (
   <Layout total_count={ data.totalCount.totalCount }>
-    <SEO title="Szkło" />
+    <SEO 
+      title="Wyroby ze szkła - kubki Górnik Zabrze"
+      description="Wyroby ze szkła wydane przez Górnik takie jak kieliszki,
+      kufle, czy szklanki. Sprawdź!" />
     <Breadcrumbs name="Szkło" parent="" parent_name="" />
     <h2 className="site_title">Szkło</h2>
     <div className="section_description">

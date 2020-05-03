@@ -2,10 +2,147 @@
     main .container, nav .nav_container{
         width: 600px;
     }
+
+    header h1 a{
+        font-size: 45px;
+        line-height: 60px;
+    }
+
+    .nav_container a{
+        font-size: 16px;
+        line-height: 40px;
+    }
+
+    .tiles_container .item{
+        max-height: 225px;
+        max-width: 225px;
+    }
+
+    .tiles_container .item img{
+        max-width: 100%;
+    }
+
+    .cup_images .img{
+        width: 175px;
+    }
+
+    .glass_images .img{
+        width: 225px;
+    }
+
+    .item_list, .looking_container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal .modal_container{
+        height: 450px;
+        width: 600px;
+    }
+
+    .modal .modal_info img{
+        max-width: 450px;
+    }
 }
 
 @media (max-width: 575.98px) {
-    main .container, nav .nav_container{
+    main .container{
         width: 350px;
+    }
+
+    header h1 a{
+        font-size: 24px;
+        line-height: 40px;
+    }
+
+    header .cups_counter{
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    nav .nav_container{
+        flex-direction: column;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .nav_container a{
+        font-size: 16px;
+        line-height: 40px;
+        width: 100%;
+    }
+
+    .breadcrumbs{
+        flex-wrap: wrap;
+        padding: 10px 0 15px;
+    }
+
+    .breadcrumbs li{
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .section_description{
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    footer{
+        line-height: 50px;
+    }
+
+    .main_page_content{
+        font-size: 16px;
+    }
+
+    .tiles_container, .item_list, .looking_container, .cup_images, .glass_images{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .tiles_container .item{
+        max-height: 200px;
+        max-width: 200px;
+    }
+
+    .tiles_container .item img{
+        max-width: 100%;
+    }
+
+    .cup_images, .glass_images{
+        grid-gap: 30px 0;
+    }
+
+    .cup_images .img, .glass_images .img{
+        width: 225px;
+    }
+
+    .cup_info, .glass_info{
+        font-size: 18px;
+    }
+
+    .modal .modal_container{
+        height: 300px;
+        width: 330px;
+    }
+
+    .modal .modal_info img{
+        max-width: 250px;
+    }
+
+    .modal .modal_info h5{
+        font-size: 18px;
+        line-height: 30px;
+        margin: 10px 0;
+    }
+
+    .modal .modal_prev, .modal .modal_next{
+        transform: translateY(-50%) scale(0.7);
+    }
+
+    .modal .modal_prev{
+        left: 5px;
+    }
+
+    .modal .modal_next{
+        right: 5px;
     }
 }

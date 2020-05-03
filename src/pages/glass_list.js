@@ -7,7 +7,10 @@ import Breadcrumbs from "../components/breadcrumbs"
 
 const GlassListPage = ({ data }) => (
   <Layout total_count={ data.totalCount.totalCount }>
-    <SEO title="Szkło lista" />
+    <SEO 
+      title={ "Wyroby szklane - " + data.categories.nodes[0].title + ' - kubki Górnik Zabrze'}
+      description={ "Szkło z kategorii " + data.categories.nodes[0].title
+      + ". Na liście już " + data.glasses.totalCount + " pozycji! Zobacz i pomóż zdobyć kolejne!" } />
     <Breadcrumbs name={ data.categories.nodes[0].title } parent="/szklo" parent_name="Szkło" />
     <h2 className="site_title">
       { data.categories.nodes[0].title } ({ data.glasses.totalCount})

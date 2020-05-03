@@ -7,7 +7,10 @@ import Breadcrumbs from "../components/breadcrumbs"
 
 const CupsListPage = ({ data }) => (
   <Layout total_count={ data.totalCount.totalCount }>
-    <SEO title="Kubki" />
+    <SEO
+      title={ "Kubeczki - " + data.categories.nodes[0].title + ' - kubki Górnik Zabrze'}
+      description={ "Kubki z kategorii " + data.categories.nodes[0].title
+      + ". Na liście już " + data.cups.totalCount + " pozycji! Zobacz i pomóż zdobyć kolejne!" } />
     <Breadcrumbs name={ data.categories.nodes[0].title } parent="/kubki" parent_name="Kubki" />
     <h2 className="site_title">
     { data.categories.nodes[0].title } ({ data.cups.totalCount})
@@ -15,14 +18,14 @@ const CupsListPage = ({ data }) => (
     <div className="section_description" 
     dangerouslySetInnerHTML={{__html: data.categories.nodes[0].content }}>
     </div>
-    <div class="item_list">
+    <div className="item_list">
     { 
       data.cups.nodes.map(function(elem) {
          return (
            <div className="item" key={ elem.wordpress_id }>
               <a href={ "/kubki/" + data.categories.nodes[0].slug + "/" + elem.slug }>
                 <img data-src={ elem.acf.zdjecie_glowne } alt={ "Kubek " + elem.title } className="img lazyload" />
-                <h4 class="title" dangerouslySetInnerHTML={{__html: elem.title}}></h4>
+                <h4 className="title" dangerouslySetInnerHTML={{__html: elem.title}}></h4>
               </a>
            </div>
          )

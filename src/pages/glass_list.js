@@ -34,6 +34,7 @@ const GlassListPage = ({ data, pageContext }) => (
     </div>
     <div className="pagination">
       { pageContext.currentPage !== 1 && <a href={ "/szklo/"+data.categories.nodes[0].slug+"/" + ((pageContext.currentPage - 1) === 1 ? "" : pageContext.currentPage - 1)} className="pagination_link pagination_prev">{ "<" + (pageContext.currentPage - 1) }</a> }
+      <strong className="pagination_current">{ pageContext.currentPage }</strong>
       { pageContext.currentPage !== pageContext.numPages && <a href={ "/szklo/" + data.categories.nodes[0].slug + "/" + (pageContext.currentPage + 1)} className="pagination_link pagination_next">{ (pageContext.currentPage + 1) + ">" }</a>}
     </div>
   </Layout>

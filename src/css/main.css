@@ -385,6 +385,18 @@ main .container{
     font-weight: 700;
 }
 
+.pagination .pagination_current{
+    background: var(--main-red);
+    border: 2px solid var(--main-red);
+    color: var(--main-white);
+    display: block;
+    font-size: 20px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    width: 40px
+}
+
 .modal .modal_layer{
     background: #000000;
     height: 100%;

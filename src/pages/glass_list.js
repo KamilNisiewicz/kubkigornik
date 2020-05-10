@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Breadcrumbs from "../components/breadcrumbs"
 
-const GlassListPage = ({ data }) => (
+const GlassListPage = ({ data, pageContext }) => (
   <Layout total_count={ data.totalCount.totalCount }>
     <SEO 
       title={ "Wyroby szklane - " + data.categories.nodes[0].title + ' - kubki Górnik Zabrze'}
@@ -32,13 +32,17 @@ const GlassListPage = ({ data }) => (
       })
     }
     </div>
+    <div className="pagination">
+      { pageContext.currentPage !== 1 && <a href={ "/szklo/"+data.categories.nodes[0].slug+"/" + ((pageContext.currentPage - 1) === 1 ? "" : pageContext.currentPage - 1)} className="pagination_link pagination_prev">{ "<" + (pageContext.currentPage - 1) }</a> }
+      { pageContext.currentPage !== pageContext.numPages && <a href={ "/szklo/" + data.categories.nodes[0].slug + "/" + (pageContext.currentPage + 1)} className="pagination_link pagination_next">{ (pageContext.currentPage + 1) + ">" }</a>}
+    </div>
   </Layout>
 )
 
 export default GlassListPage;
 
 export const Query = graphql`
-  query Glass($cat_id: Int) {
+  query Glass($cat_id: Int, $skip: Int, $limit: Int) {
     categories: allWordpressWpKategorieSzklo(filter: {wordpress_id: {eq: $cat_id}}) {
       nodes {
         title
@@ -46,7 +50,12 @@ export const Query = graphql`
         slug
       }
     }
-    glasses: allWordpressWpSzklo(filter: {acf: {kategoria_szklo: {wordpress_id: {eq: $cat_id}}}}, sort: {fields: title, order: ASC}) {
+    glasses: allWordpressWpSzklo(
+        filter: { acf: {kategoria_szklo: {wordpress_id: {eq: $cat_id}}}},
+        sort: {fields: title, order: ASC},
+        limit: $limit,
+        skip: $skip
+      ){
       nodes {
         acf {
           data_dodania

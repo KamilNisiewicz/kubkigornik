@@ -23,8 +23,8 @@ const IndexPage = ({ data }) => (
       pozycje w mojej kolekcji. W przypadku, gdy posiadasz znajdujący się tam kubeczek,
       lub jesteś w posiadaniu takiego, którego nie można znaleźć w zestawie - prosiłbym o
       kontakt mailowy:</p>
-      <a href="mailto:yogiber@op.pl" className="mail_to">
-        &raquo;&nbsp;yogiber@op.pl&nbsp;&laquo;
+      <a href="mailto:tomekkubki@gmail.com" className="mail_to">
+        &raquo;&nbsp;tomekkubki@gmail.com&nbsp;&laquo;
       </a>
     </div>
   </Layout>

@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Breadcrumbs from "../components/breadcrumbs"
 import Modal from "../components/modal"
 
-const LookingPage = ({ data }) => (
+const LookingPage = ({ data, pageContext }) => (
   <Layout total_count={ data.totalCount.totalCount }>
     <SEO 
       title="Poszukuję - kubki Górnik Zabrze"
@@ -20,8 +20,8 @@ const LookingPage = ({ data }) => (
         Jeżeli posiadasz którychś z nich i jesteś skłonny go odsprzedać to
         zachęcam do kontaktu mailowego na adres podany poniżej.
       </p>
-      <a href="mailto:yogiber@op.pl" className="mail_to">
-        &raquo;&nbsp;yogiber@op.pl&nbsp;&laquo;
+      <a href="mailto:tomekkubki@gmail.com" className="mail_to">
+        &raquo;&nbsp;tomekkubki@gmail.com&nbsp;&laquo;
       </a>
     </div>
     <div className="looking_container">
@@ -36,6 +36,10 @@ const LookingPage = ({ data }) => (
       })
     }
     </div>
+    <div className="pagination">
+      { pageContext.currentPage !== 1 && <a href={ "/szukam/" + ((pageContext.currentPage - 1) === 1 ? "" : pageContext.currentPage - 1)} className="pagination_link pagination_prev">{ "<" + (pageContext.currentPage - 1) }</a> }
+      { pageContext.currentPage !== pageContext.numPages && <a href={ "/szukam/"+ (pageContext.currentPage + 1)} className="pagination_link pagination_next">{ (pageContext.currentPage + 1) + ">" }</a>}
+    </div>
     <Modal />
   </Layout>
 )
@@ -43,8 +47,12 @@ const LookingPage = ({ data }) => (
 export default LookingPage;
 
 export const Query = graphql`
-  query LookingData {
-    looking: allWordpressWpSzukam(sort: {fields: title}) {
+  query LookingData($skip: Int, $limit: Int) {
+    looking: allWordpressWpSzukam(
+        sort: {fields: title}
+        limit: $limit
+        skip: $skip
+    ){
       nodes {
         acf {
           zdjecie_szukam

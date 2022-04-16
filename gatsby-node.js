@@ -197,4 +197,10 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       });
     })
+
+    createPage({
+      path: `/nowosci`,
+      component: require.resolve(`./src/pages/newest.js`),
+      context: {  },
+    })
 }

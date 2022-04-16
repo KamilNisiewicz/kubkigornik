@@ -103,7 +103,7 @@ nav .nav_container{
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    width: calc(100% / 4);
+    width: calc(100% / 5);
 
     -webkit-transition: background-position 300ms, color 300ms ease;
     -moz-transition: background-position 300ms, color 300ms ease;
@@ -357,6 +357,23 @@ main .container{
     color: var(--main-red);
     cursor: pointer;
     text-shadow: 1px 1px 1px #000000;
+}
+
+/* NEWSEST */
+.newest-links{
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 10px;
+    transition: all .3s;
+}
+
+.newest-links a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.newest-links a:hover{
+    color: var(--main-red);
 }
 
 /* PAGINATION */

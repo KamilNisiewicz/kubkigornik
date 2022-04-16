@@ -119,6 +119,14 @@
         font-size: 18px;
     }
 
+    .newest-links{
+        margin: 10px 0;
+    }
+
+    .newest-links a{
+        margin: 3px 0;
+    }
+
     .modal .modal_container{
         height: 300px;
         width: 330px;
